@@ -1,0 +1,97 @@
+<ng-content select="[header]"></ng-content>
+<ng-content select="[body]"></ng-content>
+<ng-content select="[footer]"></ng-content>
+
+<!-- <ng-content></ng-content> -->
+<!-- inside container component -->
+<div class="continer" *ngIf='true'>
+    <h3>Using custome tag name</h3>
+    <div class="row">
+        <div class="col text-center">
+            <div class="alert alert-warning">
+                <ng-content select="custome-slot"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- inside container component -->
+<div class="continer" *ngIf='true'>
+    <h3>Using Attribute(s) [name] | [name][another-name]</h3>
+    <div class="row">
+        <div class="col text-center">
+            <!-- Using Single Attribute -->
+            <ng-content select="[slot-one]"></ng-content>
+        </div>
+        <div class="col">
+            <!-- Using Multiple Attributes -->
+            <ng-content select="[slot][two]"></ng-content>
+        </div>
+    </div>
+</div>
+
+
+<!-- inside container component -->
+<!-- Using Attribute with Value [name="value"] -->
+<div class="continer" *ngIf='true'>
+    <h3>Using Attribute with Value [name="value"]</h3>
+    <div class="row">
+        <div class="col text-center">
+            <ng-content select="[slot='one']"></ng-content>
+        </div>
+        <div class="col">
+            <ng-content select="[slot=two]"></ng-content>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- inside container component -->
+<div class="continer" *ngIf='true'>
+    <h3>Using class(s) .name | .name.another-name</h3>
+    <div class="row">
+        <div class="col text-center">
+            <!-- Using Single Class -->
+            <ng-content select=".slot-one"></ng-content>
+        </div>
+        <div class="col">
+            <!-- Using Multi Class -->
+            <ng-content select=".slot.two"></ng-content>
+        </div>
+    </div>
+</div>
+
+<!-- Using tag name with role-->
+<div class="continer" *ngIf='true'>
+    <h3>Using tag name with role</h3>
+    <div class="row">
+        <div class="col text-center">
+            <ng-content select="div[role=content]"></ng-content>
+        </div>
+    </div>
+</div>
+
+
+<!-- Using tag name with class name-->
+<div class="continer" *ngIf='true'>
+    <h3>Using tag name with class name</h3>
+    <div class="row">
+        <div class="col text-center">
+            <ng-content select="div.message"></ng-content>
+        </div>
+    </div>
+</div>
+
+
+<div class="continer" *ngIf='true'>
+    <div class="row">
+        <div class="col text-center">
+            <div class="alert alert-danger">
+                <ng-content select="[slot=start]"></ng-content>
+                <span>Hello World</span>
+                <ng-content select="[slot=end]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

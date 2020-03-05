@@ -1,0 +1,74 @@
+<div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+        <h1 class="font-weight-light">NG-Template-Outlet-Example</h1>
+
+        <div class="row">
+            <h3>
+                ngTemplateOutlet using reference
+            </h3>
+
+            <div id="container" class="col-12">
+                <ng-container *ngTemplateOutlet="studentlist"></ng-container>
+            </div>
+
+            <div id="template" class="col-12 ">
+                <ng-template #studentlist>
+                    <div class="alert alert-warning" *ngFor="let student of students; let i = index">
+                        {{student.name}} : {{student.stream}}
+                    </div>
+                </ng-template>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <h3 class="text-center">
+                Using the context object
+            </h3>
+            <div id="container" class="col-12">
+                <!-- <ng-container *ngTemplateOutlet="templateRef; context: {entry: entry}"></ng-container> -->
+                <ng-container [ngTemplateOutlet]="templateRef" [ngTemplateOutletContext]="{entry: entry}">
+                </ng-container>
+            </div>
+
+            <div id="template" class="col-12">
+                <ng-template #templateRef let-xyz="entry">
+                    <div class="alert alert-dark">My entry is {{xyz | json}}</div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="row">
+            <h3 class="text-center">
+                Using the key $implicit in the context object
+            </h3>
+            <div id="container" class="col-12">
+                <ng-container *ngTemplateOutlet="textRef"></ng-container>
+                <ng-container *ngTemplateOutlet="implicitRef, context: contextDetails"></ng-container>
+                <ng-container *ngTemplateOutlet=" nameRef; context: contextDetails"></ng-container>
+                <ng-container *ngTemplateOutlet="profileRef; context: contextDetails"></ng-container>
+                <ng-container *ngTemplateOutlet="mergeRef; context: contextDetails"></ng-container>
+            </div>
+
+            <div id="template" class="col-12">
+                <ng-template #textRef>
+                    <div class="alert alert-primary">Hello</div>
+                </ng-template>
+                <ng-template #implicitRef let-text>
+                    <div class="alert alert-secondary">Hello {{text}}!!!</div>
+                </ng-template>
+                <ng-template #nameRef let-name="contextName">
+                    <div class="alert alert-success">My Name is {{name}}.</div>
+                </ng-template>
+                <ng-template #profileRef let-profile="contextProfile">
+                    <div class="alert alert-danger">Profile is a {{profile}}.</div>
+                </ng-template>
+                <ng-template #mergeRef let-name="contextName" let-prof="contextProfile">
+                    <div class="alert alert-info">My Name is {{name}}. Profile is a {{prof}}.</div>
+                </ng-template>
+            </div>
+
+        </div>
+
+    </div>
+</div>

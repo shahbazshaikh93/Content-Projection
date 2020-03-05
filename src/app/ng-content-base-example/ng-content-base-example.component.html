@@ -1,0 +1,102 @@
+<div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+        <h1 class="font-weight-light">NG-Content-Example</h1>
+
+        <app-ng-content-example>
+
+            <!-- Using custome tag name-->
+            <custome-slot>Content For Custome-slot tag</custome-slot>
+
+            <!-- inside another component using container component -->
+            <div class="alert alert-success" role="alert" slot-one>
+                Using Single Attribute. Ex. slot-one
+            </div>
+
+            <div class="alert alert-danger" role="alert" slot two>
+                Using Multiple Attributes. Ex. slot two
+            </div>
+            <div class="alert alert-danger" role="alert" slot two>
+                Using Multiple Attributes. Ex. slot two
+            </div>
+
+            <!-- inside another component using container component -->
+            <div class="alert alert-primary" role="alert" slot="one">
+                Using Attribute with Value [name="one"] one.
+            </div>
+            <div class="alert alert-secondary" role="alert" slot="two">
+                Using Attribute with Value [name=two] two.
+            </div>
+
+            <!-- inside another component using container component -->
+            <div class="alert alert-warning slot-one" role="alert">
+                Using Single Class. Ex. select=".slot-one"
+            </div>
+            <div class="alert alert-info slot two" role="alert">
+                Using Multiple Classes. Ex. select=".slot.two"
+            </div>
+
+            <!--Using role and tag name-->
+            <div class="alert alert-success" role="content">
+                This should be rendered using role in ng-content.
+            </div>
+
+            <!-- Using tag with class-->
+            <div class="alert alert-dark message">
+                Using tag name with class name.
+            </div>
+
+            <div footer>
+                <footer class="navbar navbar-expand-md navbar-dark  bg-dark">
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="javascript:void(0)">&copy; Copyright 2016 - City of USA. All
+                                    rights reserved. <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+
+            <div header>
+                <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
+                    <a class="navbar-brand" href="javascript:void(0)">NavBar</a>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="javascript:void(0)">Home <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0)">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0)">Contact Us</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline mt-2 mt-md-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+
+            <div body>
+                <div class="container">
+                    <div class="jumbotron">
+                        <h1>Navbar example</h1>
+                        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As
+                            you scroll, it will remain fixed to the top of your browser's viewport.</p>
+                        <a class="btn btn-lg btn-primary" href="javascript:void(0)" role="button">View navbar docs
+                            &raquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <span slot="start">This is a </span>
+            <span slot="end"> example.</span>
+
+        </app-ng-content-example>
+    </div>
+</div>

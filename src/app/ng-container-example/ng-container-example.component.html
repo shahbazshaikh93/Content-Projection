@@ -1,0 +1,15 @@
+<div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+        <!-- Without NG-Container-Example-->
+        <h1 class="font-weight-light">Without NG-Container-Example</h1>
+        <div *ngFor="let item of items">
+            <div class="alert alert-success" *ngIf="item.id">{{item.id}}, {{item.name}}</div>
+        </div>
+
+        <!-- With NG-Container-Example-->
+        <h1 class="font-weight-light mt-5">With NG-Container-Example</h1>
+        <ng-container *ngFor="let item of items">
+            <div class="alert alert-danger" *ngIf="item.id">{{item.id}}, {{item.name}}</div>
+        </ng-container>
+    </div>
+</div>

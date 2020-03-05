@@ -1,0 +1,203 @@
+<div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+        <h1 class="font-weight-light">NG-Template-Example</h1>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 text-center m-3">
+                    <h3>ng-template with ngIf</h3>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <button type="button" class="btn btn-primary" (click)="onNgIfBlock()">Toggle</button>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <ng-template [ngIf]="ngIfBlock">
+                        <div class="alert alert-success">
+                            Hello World!
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center m-3">
+                    <h3>ng-template with ngIf-else</h3>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <button type="button" class="btn btn-primary" (click)="onNgIfElseBlock()">Toggle</button>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <div *ngIf="ngIfElseBlock; else msgElseBlock">
+                        <!-- <ng-template [ngIf]="ngIfElseBlock" [ngIfElse]="msgElseBlock"> -->
+                        <div class="alert alert-danger">Hello World!</div>
+                        <!-- </ng-template> -->
+                    </div>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <ng-template #msgElseBlock>
+                        <div class="alert alert-warning">Else Block: Hello World!</div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center m-3">
+                    <h3>ng-template with ngIf-then-else</h3>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <button type="button" class="btn btn-primary" (click)="onNgIfThenElseBlock()">Toggle</button>
+                </div>
+
+                <div class="col-12 text-center m-2">
+                    <!-- <div *ngIf="ngIfThenElseBlock; then thenBlock else elseBlock"> -->
+                    <ng-template [ngIf]="ngIfThenElseBlock" [ngIfThen]="thenBlockRef" [ngIfElse]="elseBlockRef">
+                        Here is never showing
+                    </ng-template>
+                    <!-- </div> -->
+                </div>
+
+                <div class="col-12 text-center m-2">
+                    <ng-template #thenBlockRef>
+                        <div class="alert alert-primary">Then Block: Hello World!</div>
+                    </ng-template>
+                </div>
+
+                <div class="col-12 text-center m-2">
+                    <ng-template #elseBlockRef>
+                        <div class="alert alert-warning">Else Block: Hello World!</div>
+                    </ng-template>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <h3>ng-template with ngSwitch</h3>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="EastRadio" class="custom-control-input" name="direction"
+                            (click)="myDir='east'">
+                        <label class="custom-control-label" for="EastRadio">East</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="WestRadio" class="custom-control-input" name="direction"
+                            (click)="myDir='west'">
+                        <label class="custom-control-label" for="WestRadio">West</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="NorthRadio" class="custom-control-input" name="direction"
+                            (click)="myDir='north'">
+                        <label class="custom-control-label" for="NorthRadio">North</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="SouthRadio" class="custom-control-input" name="direction"
+                            (click)="myDir='south'">
+                        <label class="custom-control-label" for="SouthRadio">South</label>
+                    </div>
+                    <br /><br />
+                    <div [ngSwitch]="myDir">
+                        <ng-template [ngSwitchCase]="'east'">
+                            <div class="alert alert-info">Go to <b>East</b> Direction </div>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'west'">
+                            <div class="alert alert-info">Go to <b>West</b> Direction </div>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'north'">
+                            <div class="alert alert-info">Go to <b>North</b> Direction </div>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="'south'">
+                            <div class="alert alert-info">Go to <b>South</b> Direction </div>
+                        </ng-template>
+                        <ng-template ngSwitchDefault>
+                            <div class="alert alert-danger">No Direction</div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12 text-center m-3">
+                    <h3>ng-template with ngFor</h3>
+                </div>
+                <div class="col-12 text-center m-2">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Index</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-template ngFor let-item [ngForOf]="items" let-i="index" let-o="odd" let-e="even"
+                                let-f="first" let-l="last" [ngForTrackBy]="trackByFn">
+                                <tr>
+                                    <th scope="col">{{i + 1}}</th>
+                                    <th scope="col">{{item.name}}</th>
+                                    <th scope="col">{{item.age}}</th>
+                                </tr>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h3>Using NgIf with AsyncPipe</h3>
+
+                    <div *ngIf="studentList | async as lists; else loading">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Stream</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let list of lists">
+                                    <th scope="col">{{list.name}}</th>
+                                    <th scope="col">{{list.stream}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ng-template #loading>
+                        <div class="col-12 text-center m-5">
+                            <div class="loader"></div>
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+
+            <!-- <div class="row">
+                <div class="col">
+                    <h3>ng-template with TemplateRef and ViewContainerRef</h3>
+
+                    <ng-template #msg>
+                        <div class="alert alert-warning">
+                            Welcome to you.<br />
+                            Happy learning!
+                        </div>
+                    </ng-template>
+
+                    <div class="col-12">
+                        <h3>Message </h3>
+                        <div #cpMsg> </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h3>Message </h3>
+                        <div #cpMsg> </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+
+    </div>
+</div>
